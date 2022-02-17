@@ -14,8 +14,14 @@ var displayCurrentWeather = function() {
 }
 
 // Display welcome in header
-var displayHeader = function() {
+var displayHeaders = function() {
     welcomeEl.textContent = "Welcome! Today is " + getCurrentDate() + ".";
+
+    document.querySelector("#day-one-header").textContent = moment().add(1, "d").format("M/D/YYYY");
+    document.querySelector("#day-two-header").textContent = moment().add(2, "d").format("M/D/YYYY");
+    document.querySelector("#day-three-header").textContent = moment().add(3, "d").format("M/D/YYYY");
+    document.querySelector("#day-four-header").textContent = moment().add(4, "d").format("M/D/YYYY");
+    document.querySelector("#day-five-header").textContent = moment().add(5, "d").format("M/D/YYYY");
 };
 
 // Get current date
@@ -83,6 +89,8 @@ var getWeather = function(lat, lon, city) {
         if (response.ok) {
             response.json().then(function(data) {
                 console.log(data);
+
+                displayWeatherData(data, city);
             });
         } else {
             alert("Sorry, there was an error processing your request.");
@@ -93,13 +101,18 @@ var getWeather = function(lat, lon, city) {
     });
 }
 
+// Display Weather Data
+var displayWeatherData = function(data, city) {
+    citySearchedEl.textContent = city;
+}
+
 // Listen for form submission
 cityFormEl.addEventListener("submit", captureForm);
 
-displayHeader();
+displayHeaders();
 
 // Update current date every half hour
 setInterval(function() {
     getCurrentDate();
-    displayHeader();
+    displayHeaders();
 }, (1000 * 60) * 30)
