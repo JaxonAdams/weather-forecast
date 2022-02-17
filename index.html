@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1 id="welcome"></h1>
+    </header>
+
+    <aside id="search-area">
+        <form id="city-form">
+            <h2>Search For A City:</h2>
+            <input name="searchbar" id="searchbar" placeholder="Enter a city name..."></input>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="search-history"></div>
+    </aside>
+
+    <main>
+        <div id="current-weather">
+            <h2 id="city-searched"></h2>
+            <p id="temp"></p>
+            <p id="wind"></p>
+            <p id="humidity"></p>
+            <p id="uv-index"></p>
+        </div>
+        <div id="forecast">
+            <h2>Later This Week...</h2>
+            <div class="card" id="day-one"></div>
+            <div class="card" id="day-two"></div>
+            <div class="card" id="day-three"></div>
+            <div class="card" id="day-four"></div>
+            <div class="card" id="day-five"></div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" referrerpolicy="no-referrer"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
