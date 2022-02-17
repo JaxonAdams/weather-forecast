@@ -79,7 +79,7 @@ aside h2 {
     height: 2.25rem;
     border-radius: 8px;
     box-shadow: 0 0 8px black;
-    text-align: center;
+    padding: .5rem;
     margin: 1rem 0;
 }
 
@@ -110,14 +110,54 @@ main {
 }
 
 .main-section-1 {
-    flex: 50%;
-    margin: 0 3rem 0 1.5rem;
+    flex: 40%;
+    margin: 0 3rem 1rem 1.5rem;
     background-color: var(--section-bg-color);
     padding: .5rem 1rem;
     border-radius: 9px;
     padding: 2rem;
 }
 
+.main-section-1 h2 {
+    font-size: 2rem;
+    margin: 0 2rem 2rem 2rem;
+}
+
+.main-section-1 p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
 .main-section-2 {
     flex: 50%;
+    margin: 0 3rem 1rem 1.5rem;
+}
+
+.section-2-header {
+    margin: 0 2rem 2rem 2rem;
+}
+
+.card-container {
+    display: flex;
+}
+
+.card {
+    flex: 20%;
+    height: 30vh;
+    box-sizing: border-box;
+    margin: 0 .5rem;
+    padding: .5rem 1rem;
+    background-color: var(--section-bg-color);
+    border-radius: 9px;
+}
+
+.card h2 {
+    border-bottom: 3px solid var(--primary-txt);
+    margin-bottom: .5rem;
+    padding-bottom: .7rem;
+}
+
+.card p {
+    font-size: 1.3rem;
+    margin-bottom: .5rem;
 }
