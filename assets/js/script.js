@@ -103,7 +103,19 @@ var getWeather = function(lat, lon, city) {
 
 // Display Weather Data
 var displayWeatherData = function(data, city) {
-    citySearchedEl.textContent = city;
+    citySearchedEl.textContent = "City: " + city;
+
+    var currentTemp = data.current.temp;
+    var currentWind = data.current.wind_speed;
+    var currentHumidity = data.current.humidity;
+    var currentUV = data.current.uvi;
+
+    console.log(currentTemp, currentWind, currentHumidity, currentUV);
+
+    tempEl.textContent = "Temperature: " + currentTemp + " Degrees Fahrenheit";
+    windEl.textContent = "Wind Speed: " + currentWind + " MPH";
+    humidityEl.textContent = "Humidity: " + currentHumidity + "%";
+    uvIndexEl.textContent = "UV Index: " + currentUV;
 }
 
 // Listen for form submission
