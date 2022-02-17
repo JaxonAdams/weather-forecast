@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
@@ -12,32 +15,54 @@
         <h1 id="welcome"></h1>
     </header>
 
-    <aside id="search-area">
-        <form id="city-form">
-            <h2>Search For A City:</h2>
-            <input name="searchbar" id="searchbar" placeholder="Enter a city name..."></input>
-            <input type="submit" value="Submit">
-        </form>
-        <div id="search-history"></div>
-    </aside>
-
-    <main>
-        <div id="current-weather">
-            <h2 id="city-searched"></h2>
-            <p id="temp"></p>
-            <p id="wind"></p>
-            <p id="humidity"></p>
-            <p id="uv-index"></p>
-        </div>
-        <div id="forecast">
-            <h2>Later This Week...</h2>
-            <div class="card" id="day-one"></div>
-            <div class="card" id="day-two"></div>
-            <div class="card" id="day-three"></div>
-            <div class="card" id="day-four"></div>
-            <div class="card" id="day-five"></div>
-        </div>
-    </main>
+    <div class="container">
+        <aside id="search-area">
+            <form id="city-form">
+                <h2>Search For A City:</h2>
+                <input name="searchbar" id="searchbar" placeholder="Enter a city name..."></input>
+                <input type="submit" value="Submit" class="btn submit-btn">
+            </form>
+            <div id="search-history"></div>
+        </aside>
+    
+        <main class="container main-container">
+            <div id="current-weather" class="main-section-1">
+                <h2 id="city-searched"></h2>
+                <p id="temp"></p>
+                <p id="wind"></p>
+                <p id="humidity"></p>
+                <p id="uv-index"></p>
+            </div>
+            <div id="forecast" class="main-section-2">
+                <h2>Later This Week...</h2>
+                <div class="card" id="day-one">
+                    <p id="temp-one"></p>
+                    <p id="wind-one"></p>
+                    <p id="humidity-one"></p>
+                </div>
+                <div class="card" id="day-two">
+                    <p id="temp-two"></p>
+                    <p id="wind-two"></p>
+                    <p id="humidity-two"></p>
+                </div>
+                <div class="card" id="day-three">
+                    <p id="temp-three"></p>
+                    <p id="wind-three"></p>
+                    <p id="humidity-three"></p>
+                </div>
+                <div class="card" id="day-four">
+                    <p id="temp-four"></p>
+                    <p id="wind-four"></p>
+                    <p id="humidity-four"></p>
+                </div>
+                <div class="card" id="day-five">
+                    <p id="temp-five"></p>
+                    <p id="wind-five"></p>
+                    <p id="humidity-five"></p>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/script.js"></script>
