@@ -126,6 +126,25 @@ main {
 .main-section-1 p {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    padding: 0 .5rem;
+}
+
+#uv-index {
+    box-sizing: border-box;
+    padding: 0 .5rem;
+    border-radius: 5px;
+}
+
+.uv-good {
+    background-color: lightgreen;
+}
+
+.uv-meh {
+    background-color: goldenrod;
+}
+
+.uv-bad {
+    background-color: tomato;
 }
 
 .main-section-2 {
@@ -145,7 +164,7 @@ main {
     flex: 20%;
     height: 30vh;
     box-sizing: border-box;
-    margin: 0 .5rem;
+    margin: 0 .5rem 1rem .5rem;
     padding: .5rem 1rem;
     background-color: var(--section-bg-color);
     border-radius: 9px;
@@ -158,6 +177,38 @@ main {
 }
 
 .card p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-bottom: .5rem;
+}
+
+.icon-img {
+    width: auto;
+    height: auto;
+    max-width: 50%;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+/* small desktops */
+@media screen and (max-width: 1200px) {
+    .card-container {
+        flex-direction: column;
+    }
+}
+
+/* small laptops */
+@media screen and (max-width: 1024px) {
+
+}
+
+/* tablets */
+@media screen and (max-width: 768px) {
+
+}
+
+/* phones */
+@media screen and (max-width: 480px) {
+
 }

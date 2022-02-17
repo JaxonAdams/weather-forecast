@@ -17,11 +17,11 @@ var displayCurrentWeather = function() {
 var displayHeaders = function() {
     welcomeEl.textContent = "Welcome! Today is " + getCurrentDate() + ".";
 
-    document.querySelector("#day-one-header").textContent = moment().add(1, "d").format("M/D/YYYY");
-    document.querySelector("#day-two-header").textContent = moment().add(2, "d").format("M/D/YYYY");
-    document.querySelector("#day-three-header").textContent = moment().add(3, "d").format("M/D/YYYY");
-    document.querySelector("#day-four-header").textContent = moment().add(4, "d").format("M/D/YYYY");
-    document.querySelector("#day-five-header").textContent = moment().add(5, "d").format("M/D/YYYY");
+    document.querySelector("#day-one-header").textContent = moment().add(1, "d").format("dddd");
+    document.querySelector("#day-two-header").textContent = moment().add(2, "d").format("dddd");
+    document.querySelector("#day-three-header").textContent = moment().add(3, "d").format("dddd");
+    document.querySelector("#day-four-header").textContent = moment().add(4, "d").format("dddd");
+    document.querySelector("#day-five-header").textContent = moment().add(5, "d").format("dddd");
 };
 
 // Get current date
@@ -105,17 +105,71 @@ var getWeather = function(lat, lon, city) {
 var displayWeatherData = function(data, city) {
     citySearchedEl.textContent = "City: " + city;
 
+    // Current Weather Data
     var currentTemp = data.current.temp;
     var currentWind = data.current.wind_speed;
     var currentHumidity = data.current.humidity;
     var currentUV = data.current.uvi;
 
-    console.log(currentTemp, currentWind, currentHumidity, currentUV);
-
-    tempEl.textContent = "Temperature: " + currentTemp + " Degrees Fahrenheit";
+    tempEl.textContent = "Temperature: " + currentTemp + "°F";
     windEl.textContent = "Wind Speed: " + currentWind + " MPH";
     humidityEl.textContent = "Humidity: " + currentHumidity + "%";
     uvIndexEl.textContent = "UV Index: " + currentUV;
+
+    // UV Index Color
+    if (currentUV > 0 && currentUV < 2) {
+        uvIndexEl.classList.add("uv-good");
+    } else if (currentUV > 2 && currentUV <5 ) {
+        uvIndexEl.classList.add("uv-meh");
+    } else if (currentUV > 5) {
+        uvIndexEl.classList.add("uv-bad");
+    }
+
+    // Five Day Forecast
+    
+    // Temp
+    for (let i = 1; i < 6; i++) {
+        document.querySelector("#temp-"+i).textContent = "Temp: " + data.daily[i].temp.day + "°F";
+    }
+
+    // Wind
+    for (let i = 1; i < 6; i++) {
+        document.querySelector("#wind-"+i).textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
+    }
+
+    // Humidity
+    for (let i = 1; i < 6; i++) {
+        document.querySelector("#humidity-"+i).textContent = "Humidity: " + data.daily[i].humidity + "%";
+    }
+
+    // Icon
+    for (let i = 1; i < 6; i++) {
+        var thunderImgSrc = "./assets/images/thunderstorm.png";
+        var rainImgSrc = "./assets/images/rain.png";
+        var snowImgSrc = "./assets/images/snow.png";
+        var clearImgSrc = "./assets/images/favicon.png";
+        var cloudImgSrc = "./assets/images/cloud.png";
+
+        if (data.daily[i].weather[0].main === "Clear") {
+            document.querySelector("#icon-"+i).classList.remove("hide");
+            document.querySelector("#icon-"+i).src = clearImgSrc;
+        } else if (data.daily[i].weather[0].main === "Thunderstorm") {
+            document.querySelector("#icon-"+i).classList.remove("hide");
+            document.querySelector("#icon-"+i).src = thunderImgSrc;
+        } else if (data.daily[i].weather[0].main === "Drizzle") {
+            document.querySelector("#icon-"+i).classList.remove("hide");
+            document.querySelector("#icon-"+i).src = rainImgSrc;
+        } else if (data.daily[i].weather[0].main === "Snow") {
+            document.querySelector("#icon-"+i).classList.remove("hide");
+            document.querySelector("#icon-"+i).src = snowImgSrc;
+        } else if (data.daily[i].weather[0].main === "Rain") {
+            document.querySelector("#icon-"+i).classList.remove("hide");
+            document.querySelector("#icon-"+i).src = rainImgSrc;
+        } else if (data.daily[i].weather[0].main === "Clouds") {
+            document.querySelector("#icon-"+i).classList.remove("hide");
+            document.querySelector("#icon-"+i).src = cloudImgSrc;
+        }
+    }
 }
 
 // Listen for form submission
