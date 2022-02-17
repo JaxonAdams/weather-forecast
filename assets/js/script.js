@@ -29,18 +29,68 @@ var getCurrentDate = function() {
 var captureForm = function(event) {
     event.preventDefault();
 
-    var city = searchbar.value.trim();
+    var zipCode = searchbar.value.trim();
     
-    if (city) {
-        getWeather(city);
+    if (zipCode) {
+        getLatAndLon(zipCode);
         searchbar.value = "";
     } else {
-        alert("Please enter a city.");
+        alert("Please enter a valid zip code.");
     }
 }
 
-var getWeather = function(location) {
+var getLatAndLon = function(location) {
     console.log("Getting weather for " + location)
+    var geoUrl = "https://api.openweathermap.org/geo/1.0/zip?zip=" + location + "&appid=67c682bdeb2484022f2478f1c184a2f6";
+
+    fetch(geoUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                var lat = getLat(data);
+                var lon = getLon(data);
+                var cityName = getCityName(data);
+
+                getWeather(lat, lon, cityName);
+            });
+        } else {
+            alert("There was an error with the provided zip code. Please ensure you have entered a valid code.");
+        }
+    })
+    .catch(function(error) {
+        alert("Unable to connect to our weather API.");
+    });
+}
+
+var getLat = function(zip) {
+    return zip.lat;
+}
+
+var getLon = function(zip) {
+    return zip.lon;
+}
+
+var getCityName = function(zip) {
+    return zip.name;
+}
+
+// Get Weather using Lat and Lon Provided
+var getWeather = function(lat, lon, city) {
+    console.log(lat, lon, city);
+
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=67c682bdeb2484022f2478f1c184a2f6";
+
+    fetch(weatherUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                console.log(data);
+            });
+        } else {
+            alert("Sorry, there was an error processing your request.");
+        }
+    })
+    .catch(function(error) {
+        alert("Unable to connect to our weather API.");
+    });
 }
 
 // Listen for form submission
