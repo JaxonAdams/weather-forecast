@@ -172,6 +172,11 @@ var displayWeatherData = function(data, city) {
     }
 }
 
+// Local storage
+var addSearchHistory = function() {
+    
+}
+
 // Listen for form submission
 cityFormEl.addEventListener("submit", captureForm);
 
