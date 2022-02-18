@@ -88,10 +88,11 @@ aside h2 {
     margin-top: .7rem;
 }
 
-#searchbar, .submit-btn {
+#searchbar, .submit-btn, .history-btn {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    height: 100%;
     font-size: 1.2rem;
 }
 

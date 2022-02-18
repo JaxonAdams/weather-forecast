@@ -8,10 +8,8 @@ var uvIndexEl = document.querySelector("#uv-index");
 var cityFormEl = document.querySelector("#city-form");
 var searchbar = document.querySelector("#searchbar");
 
-// Build Out Current Weather Section
-var displayCurrentWeather = function() {
-
-}
+// Set up storage obj
+var searchHistory = {cityOne: []};
 
 // Display welcome in header
 var displayHeaders = function() {
@@ -39,6 +37,7 @@ var captureForm = function(event) {
     
     if (zipCode) {
         getLatAndLon(zipCode);
+        addSearchHistory(zipCode);
         searchbar.value = "";
     } else {
         alert("Please enter a valid zip code.");
@@ -173,14 +172,47 @@ var displayWeatherData = function(data, city) {
 }
 
 // Local storage
-var addSearchHistory = function() {
-    
+var addSearchHistory = function(zipCode) {
+    searchHistory.cityOne.push(zipCode);
+    localStorage.setItem("history", JSON.stringify(searchHistory));
 }
+
+var loadSearchHistory = function() {
+    if (localStorage.getItem("history")) {
+        searchHistory = JSON.parse(localStorage.getItem("history"));
+
+        while (searchHistory.cityOne.length > 5) {
+            searchHistory.cityOne.shift();
+        }
+
+        var historyToBeDisplayed = searchHistory.cityOne.reverse();
+        displaySearchHistory(historyToBeDisplayed);
+    }
+}
+
+// Display search history
+var displaySearchHistory = function(history) {
+    for (let i = 0; i < history.length; i++) {
+        console.log(history[i]);
+        
+        var historyButtonOne = document.querySelector("#history-btn-one");
+        var historyButtonTwo = document.querySelector("#history-btn-two");
+        var historyButtonThree = document.querySelector("#history-btn-three");
+        var historyButtonFour = document.querySelector("#history-btn-four");
+        var historyButtonFive = document.querySelector("#history-btn-five");
+
+        var historyButtonArr = [historyButtonOne, historyButtonTwo, historyButtonThree, historyButtonFour, historyButtonFive];
+
+        historyButtonArr[i].textContent = history[i];
+
+    }
+} 
 
 // Listen for form submission
 cityFormEl.addEventListener("submit", captureForm);
 
 displayHeaders();
+loadSearchHistory();
 
 // Update current date every half hour
 setInterval(function() {
