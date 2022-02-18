@@ -39,6 +39,7 @@ var captureForm = function(event) {
     if (zipCode) {
         getLatAndLon(zipCode);
         addSearchHistory(zipCode);
+        loadSearchHistory();
         searchbar.value = "";
     } else {
         alert("Please enter a valid zip code.");
