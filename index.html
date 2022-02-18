@@ -12,19 +12,21 @@
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png">
 </head>
 <body>
-    <header>
+    <header class="container">
         <h1 id="welcome"></h1>
     </header>
 
     <div class="container">
-        <aside id="search-area">
-            <form id="city-form">
-                <h2>Search For A City:</h2>
-                <input name="searchbar" id="searchbar" placeholder="Enter a zip code here..."></input>
-                <input type="submit" value="Submit" class="btn submit-btn" id="submit-btn">
-            </form>
-            <div id="search-history"></div>
-        </aside>
+        <div class="container aside-container">
+            <aside id="search-area">
+                <form id="city-form">
+                    <h2>Search For A City:</h2>
+                    <input name="searchbar" id="searchbar" placeholder="Enter a zip code here..."></input>
+                    <input type="submit" value="Submit" class="btn submit-btn" id="submit-btn">
+                </form>
+                <div id="search-history"></div>
+            </aside>
+        </div>
     
         <main class="container main-container">
             <div id="current-weather" class="main-section-1">

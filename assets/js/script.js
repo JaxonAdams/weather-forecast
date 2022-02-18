@@ -117,7 +117,7 @@ var displayWeatherData = function(data, city) {
     uvIndexEl.textContent = "UV Index: " + currentUV;
 
     // UV Index Color
-    if (currentUV > 0 && currentUV < 2) {
+    if (currentUV >= 0 && currentUV < 2) {
         uvIndexEl.classList.add("uv-good");
     } else if (currentUV > 2 && currentUV <5 ) {
         uvIndexEl.classList.add("uv-meh");

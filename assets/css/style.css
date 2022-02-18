@@ -205,7 +205,29 @@ main {
 
 /* tablets */
 @media screen and (max-width: 768px) {
+    .container {
+        display: block;
+        float: left;
+    }
 
+    .aside-container {
+        width: 80%;
+        margin-left: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .main-container {
+        margin: 1rem 3.5rem;
+        width: 80%;
+    }
+
+    .main-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .main-container p,#searchbar {
+        font-size: 1rem;
+    }
 }
 
 /* phones */
