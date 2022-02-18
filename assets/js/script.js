@@ -7,6 +7,7 @@ var humidityEl = document.querySelector("#humidity");
 var uvIndexEl = document.querySelector("#uv-index");
 var cityFormEl = document.querySelector("#city-form");
 var searchbar = document.querySelector("#searchbar");
+var searchHistoryEl = document.querySelector("#search-history");
 
 // Set up storage obj
 var searchHistory = {cityOne: []};
@@ -193,8 +194,7 @@ var loadSearchHistory = function() {
 // Display search history
 var displaySearchHistory = function(history) {
     for (let i = 0; i < history.length; i++) {
-        console.log(history[i]);
-        
+
         var historyButtonOne = document.querySelector("#history-btn-one");
         var historyButtonTwo = document.querySelector("#history-btn-two");
         var historyButtonThree = document.querySelector("#history-btn-three");
@@ -210,6 +210,11 @@ var displaySearchHistory = function(history) {
 
 // Listen for form submission
 cityFormEl.addEventListener("submit", captureForm);
+
+// Listen for history btn click
+searchHistoryEl.addEventListener("click", function(event) {
+    getLatAndLon(event.target.textContent)
+});
 
 displayHeaders();
 loadSearchHistory();
